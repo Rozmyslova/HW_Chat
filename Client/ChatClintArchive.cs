@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Client
 {
     internal class ChatClient_Archive
@@ -34,21 +35,20 @@ namespace Client
                 Console.WriteLine("Введите ваше имя:");
                 var userName = Console.ReadLine();
 
-                SendMessage(new ChatMessage { Command = Command.Register, FromName = userName });
+                SendMessage(new ChatMessage {Command = Command.Register, FromName = userName});
 
                 Console.WriteLine("Введите имя получателя:");
                 var toName = Console.ReadLine();
 
                 while (true)
                 {
-                    Console.WriteLine("Введите сообщение.");
+                    Console.WriteLine("Введите сообщение:");
                     var text = Console.ReadLine();
                     if (string.IsNullOrWhiteSpace(text))
                         break;
 
                     SendMessage(new ChatMessage() { FromName = userName, ToName = toName, Text = text, Command = Command.Message });
                 }
-
 
             }
             catch (Exception ex)
